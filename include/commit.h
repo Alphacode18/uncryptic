@@ -4,7 +4,10 @@
 
 #define TYPE (1)
 #define SCOPE (2)
-#define DESCRIPTION (3)
+#define BREAKING (3)
+#define COLON (4)
+#define DESCRIPTION (5)
+
 
 struct commit {
   char * type;
