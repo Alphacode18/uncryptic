@@ -5,8 +5,6 @@ extern int yylex();
 extern int yylineno;
 extern char* yytext;
 
-char *names[] = {NULL, "db_type", "db_name", "db_table_prefix", "db_port"};
-
 int main(void) 
 {
 
