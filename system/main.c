@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <uncryptic.h>
 
 extern int yylex();
