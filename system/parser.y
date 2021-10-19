@@ -19,8 +19,8 @@ commit:
   ;
 
 message:
-  type scope colon description
-  | type colon description
+  type scope colon description {printf("\nCommit Syntax ✓\n");}
+  | type colon description {printf("\nCommit Syntax ✓\n");}
   ;
 
 type: 
