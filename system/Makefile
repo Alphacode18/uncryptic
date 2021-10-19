@@ -1,5 +1,5 @@
-linter: lex.yy.c y.tab.c
-	gcc -g lex.yy.c y.tab.c -o linter -ll -I../include
+linter: main.c lex.yy.c y.tab.c
+	gcc -g lex.yy.c y.tab.c main.c -o linter -ll -I../include
 
 lex.yy.c: y.tab.c lexer.l
 	lex lexer.l

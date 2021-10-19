@@ -15,6 +15,7 @@ goal:
 
 commit:
   type scope colon description
+  | type colon description
   ;
 
 type: 
@@ -45,8 +46,4 @@ description:
 
 void yyerror(char *s) {
   fprintf(stderr, "%s", s);
-}
-
-int main() {
-  yyparse();
 }
