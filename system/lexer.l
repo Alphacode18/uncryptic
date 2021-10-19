@@ -1,4 +1,5 @@
 %{
+  #include "y.tab.h"
   #include <uncryptic.h>
 %}
 
@@ -25,3 +26,7 @@
 }
 
 %%
+
+int yywrap (void) {
+  return 1;
+}

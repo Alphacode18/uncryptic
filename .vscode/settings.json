@@ -1,5 +1,7 @@
 {
   "files.associations": {
-    "uncryptic.h": "c"
+    "uncryptic.h": "c",
+    "stdio.h": "c",
+    "unistd.h": "c"
   }
 }

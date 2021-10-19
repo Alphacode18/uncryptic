@@ -1,48 +1,25 @@
-%code requires 
-{
-#include <string>
+%{
+#include <uncryptic.h>
+%}
 
-#if __cplusplus > 199711L
-#define register      // Deprecated in C++11 so remove the keyword
-#endif
-}
-
+%start commit
 %token TYPE SCOPE BREAKING COLON DESCRIPTION
 
 %{
-#include <cstdio>
-#include <unistd.h>
-#include <cstring>
-#include <stdio.h>
-#include <regex.h>
-
-void yyerror(const char * s);
-int yylex();
-
+  void yyerror(const char * s);
+  int yylex();
 %}
 
 %%
 
-goal:
-  commands
+commit:
+  type
   ;
 
-commands:
-  command
-  | commands command
-  ;
+type: TYPE {printf("Runs\n");}
 
 %%
 
-void
-yyerror(const char * s)
-{
-  fprintf(stderr,"%s", s);
+void yyerror(const char *s) {
+  fprintf (stderr, "%s\n", s);
 }
-
-#if 0
-main()
-{
-  yyparse();
-}
-#endif
