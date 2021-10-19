@@ -1,25 +1,52 @@
 %{
-#include <uncryptic.h>
+  #include <uncryptic.h>
+  extern int yylex();
+  void yyerror(char *);
 %}
 
-%start commit
+%start goal
 %token TYPE SCOPE BREAKING COLON DESCRIPTION
 
-%{
-  void yyerror(const char * s);
-  int yylex();
-%}
-
 %%
 
-commit:
-  type
+goal:
+  commit
   ;
 
-type: TYPE {printf("Runs\n");}
+commit:
+  type scope colon description
+  ;
+
+type: 
+  TYPE {
+    fprintf(stdout, "TYPES\t");
+  }
+  ;
+
+scope: 
+  SCOPE {
+    fprintf(stdout, "SCOPE\t");
+  }
+  ;
+
+colon: 
+  COLON {
+    fprintf(stdout, "COLON\t");
+  }
+  ;
+
+description: 
+  DESCRIPTION {
+    fprintf(stdout, "DESCRIPTION\t");
+  }
+  ;
 
 %%
 
-void yyerror(const char *s) {
-  fprintf (stderr, "%s\n", s);
+void yyerror(char *s) {
+  fprintf(stderr, "%s", s);
+}
+
+int main() {
+  yyparse();
 }
