@@ -4,16 +4,17 @@
   void yyerror(char *);
 %}
 
-%start goal
+%start commit
 %token TYPE SCOPE BREAKING COLON DESCRIPTION
 
 %%
 
-goal:
-  commit
+commit:
+  message commit
+  | message
   ;
 
-commit:
+message:
   type scope colon description
   | type colon description
   ;
