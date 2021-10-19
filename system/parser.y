@@ -1,11 +1,15 @@
 %{
   #include <uncryptic.h>
-  extern int yylex();
-  void yyerror(char *);
 %}
 
 %start commit
 %token TYPE SCOPE BREAKING COLON DESCRIPTION
+
+%{
+  extern char * yytext;
+  extern int yylex();
+  void yyerror(char *);
+%}
 
 %%
 
