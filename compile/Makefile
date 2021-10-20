@@ -5,7 +5,7 @@ BUILDDIR := bin
 
 CC = gcc
 TARGET = linter
-FLAGS = -I../include/ -ll -o
+FLAGS = -I../include/ -o
 
 $(BUILDDIR)/$(TARGET): $(SOURCEDIR)/main.c lex.yy.c y.tab.c
 	$(CC) $(SOURCEDIR)/main.c y.tab.c lex.yy.c $(FLAGS) $(TARGET)

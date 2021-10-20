@@ -21,6 +21,8 @@ commit:
 message:
   type scope colon description {printf("\nCommit Syntax ✓\n");}
   | type colon description {printf("\nCommit Syntax ✓\n");}
+  | type scope breaking colon description {printf("\nCommit Syntax ✓\n");}
+  | type breaking colon description {printf("\nCommit Syntax ✓\n");}
   ;
 
 type: 
@@ -31,6 +33,12 @@ type:
 
 scope: 
   SCOPE {
+    ;
+  }
+  ;
+
+breaking: 
+  BREAKING {
     ;
   }
   ;
