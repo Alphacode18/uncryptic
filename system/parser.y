@@ -14,8 +14,7 @@
 %%
 
 commit:
-  message commit
-  | message
+  message
   ;
 
 message:
@@ -23,35 +22,36 @@ message:
   | type colon description {printf("\nCommit Syntax ✓\n");}
   | type scope breaking colon description {printf("\nCommit Syntax ✓\n");}
   | type breaking colon description {printf("\nCommit Syntax ✓\n");}
+  | error '\n'{yyerrok;}
   ;
 
 type: 
   TYPE {
-    ;
+    printf("TYPE\n");
   }
   ;
 
 scope: 
   SCOPE {
-    ;
+    printf("SCOPE\n");
   }
   ;
 
 breaking: 
   BREAKING {
-    ;
+    printf("BREAKING\n");;
   }
   ;
 
 colon: 
   COLON {
-    ;
+    printf("COLON\n");;
   }
   ;
 
 description: 
   DESCRIPTION {
-    ;
+    printf("DESCRIPTION\n");;
   }
   ;
 
