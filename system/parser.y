@@ -18,10 +18,20 @@ commit:
   ;
 
 message:
-  type scope colon description {printf("\nCommit Syntax ✓\n");}
-  | type colon description {printf("\nCommit Syntax ✓\n");}
-  | type scope breaking colon description {printf("\nCommit Syntax ✓\n");}
-  | type breaking colon description {printf("\nCommit Syntax ✓\n");}
+  type scope colon description {
+    printf("\nCommit Syntax ✓\n");
+    exit(0);
+    }
+  | type colon description {
+    printf("\nCommit Syntax ✓\n");
+    exit(0);
+    }
+  | type scope breaking colon description {
+    printf("\nCommit Syntax ✓\n");
+    exit(0);}
+  | type breaking colon description {
+    printf("\nCommit Syntax ✓\n");
+    exit(0);}
   | error '\n'{yyerrok;}
   ;
 
@@ -59,4 +69,5 @@ description:
 
 void yyerror(char *s) {
   fprintf(stderr, "Syntax Error: Please Ensure You Are Following The Conventional Commit Message Format\n");
+  exit(1);
 }
