@@ -9,6 +9,7 @@
   extern char * yytext;
   extern int yylex();
   void yyerror(char *);
+  void success(void);
 %}
 
 %%
@@ -19,49 +20,47 @@ commit:
 
 message:
   type scope colon description {
-    printf("\nCommit Syntax ✓\n");
-    exit(0);
+      success();
     }
   | type colon description {
-    printf("\nCommit Syntax ✓\n");
-    exit(0);
+      success();
     }
   | type scope breaking colon description {
-    printf("\nCommit Syntax ✓\n");
-    exit(0);}
+    success();
+  }
   | type breaking colon description {
-    printf("\nCommit Syntax ✓\n");
-    exit(0);}
+    success();
+  }
   | error '\n'{yyerrok;}
   ;
 
 type: 
   TYPE {
-    printf("TYPE\n");
+    ;
   }
   ;
 
 scope: 
   SCOPE {
-    printf("SCOPE\n");
+    ;
   }
   ;
 
 breaking: 
   BREAKING {
-    printf("BREAKING\n");;
+    ;
   }
   ;
 
 colon: 
   COLON {
-    printf("COLON\n");;
+    ;
   }
   ;
 
 description: 
   DESCRIPTION {
-    printf("DESCRIPTION\n");;
+    ;
   }
   ;
 
@@ -70,4 +69,9 @@ description:
 void yyerror(char *s) {
   fprintf(stderr, "Syntax Error: Please Ensure You Are Following The Conventional Commit Message Format\n");
   exit(1);
+}
+
+void success(void) {
+  printf("\nCommit Syntax ✓\n");
+  exit(0);
 }
